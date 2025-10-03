@@ -1,0 +1,13 @@
+date
+sudo useradd joh
+sudo passwd john
+sudo usermod -aG wheel john
+groups john
+sudo groupadd guest
+sudo useradd -G guest usuario1
+sudo passwd usuario1
+groups usuario1
+sudo userdel -r usuario1
+sudo groupdel guest
+getent passwd usuario1
+getent group guest
