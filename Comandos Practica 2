@@ -1,0 +1,24 @@
+Comandos usados practica 1
+
+============================================
+
+date
+nmcli con show
+nmcli con show ens160
+nmcli device show ens160
+sudo nmcli con mod ens160 ipv4.method auto
+sudo nmcli con mod ens160 ipv4.ignore-auto-dns no
+sudo nmcli con down ens160
+sudo nmcli con up ens160
+ip addr show ens160
+sudo nmcli con mod ens160 ipv4.method manual
+sudo nmcli con mod ens160 ipv4.addresses 192.168.1.50/24
+sudo nmcli con mod ens160 ipv4.gateway 192.168.1.1
+sudo nmcli con mod ens160 ipv4.dns "8.8.8.8 8.8.4.4"
+sudo nmcli con down ens160
+sudo nmcli con up ens160
+ip addr show ens160
+sudo nmcli con mod ens160 ipv4.dns "8.8.8.8 8.8.4.4"
+sudo nmcli con mod ens160 ipv4.ignore-auto-dns yes
+sudo nmcli con up ens160
+nmcli device show ens160 | grep IP4.DNS
