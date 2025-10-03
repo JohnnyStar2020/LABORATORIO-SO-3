@@ -1,0 +1,15 @@
+Comandos usados practica 4
+
+============================================
+
+date
+mkdir materia
+cd materia
+vi estudiante.txt
+cd ..
+chmod 700 materia/estudiante.txt
+chmod 070 materia/estudiante.txt
+mkdir materia2
+cp materia/estudiante.txt materia2/
+rm -r materia
+date
