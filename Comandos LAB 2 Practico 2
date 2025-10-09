@@ -1,0 +1,11 @@
+
+# PRACTICA 2
+sudo crontab -e
+# 0 23 * * * dnf update -y
+# 0 3 * * 0 /sbin/reboot
+sudo dnf install at -y
+sudo systemctl enable --now atd
+ls /tmp
+echo "rm -rf /tmp/*" | at now + 1 minute
+atq
+ls /tmp
