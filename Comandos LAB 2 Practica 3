@@ -1,0 +1,16 @@
+# PRACTICA 3
+sudo fdisk -l
+sudo fdisk /dev/nvme0n2
+# n
+# p
+# 1
+# Enter
+# Enter
+# w
+sudo mkfs.ext4 /dev/nvme0n2p1
+mkdir ~/Escritorio/disco
+sudo mount /dev/nvme0n2p1 /home/johnny/Escritorio/disco
+sudo touch /home/johnny/Escritorio/disco/AdrianAlcantara.txt
+sudo umount /home/johnny/Escritorio/disco
+sudo mount /dev/nvme0n2p1 /mnt
+ls /mnt
