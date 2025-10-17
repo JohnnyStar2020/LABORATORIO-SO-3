@@ -1,0 +1,11 @@
+# --- Configurar Tiempo de Espera de GRUB ---
+sudo nano /etc/default/grub
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# --- Recuperar Contraseña de Root (Método rd.break) ---
+mount -o remount,rw /sysroot
+chroot /sysroot
+passwd root
+touch /.autorelabel
+exit
+exit
