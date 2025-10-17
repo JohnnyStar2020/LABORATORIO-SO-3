@@ -1,0 +1,17 @@
+PRACTICA 2 LAB 3
+
+# --- Script de Backup con tar ---
+nano backup.sh
+chmod +x backup.sh
+./backup.sh
+
+# --- Script para Guardar Información de Red ---
+nano netinfo.sh
+chmod +x netinfo.sh
+./netinfo.sh
+
+# --- Comando de red usado en el script ---
+ip addr
+
+# --- Comando avanzado para detectar carpeta de Escritorio ---
+xdg-user-dir DESKTOP
