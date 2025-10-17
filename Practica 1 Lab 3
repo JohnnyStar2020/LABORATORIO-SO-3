@@ -1,3 +1,5 @@
+Practica 1: 
+
 # --- Configurar Tiempo de Espera de GRUB ---
 sudo nano /etc/default/grub
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
