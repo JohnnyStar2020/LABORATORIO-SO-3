@@ -1,0 +1,15 @@
+PRACTICA 3 LAB 3
+
+
+# --- Comandos en el Servidor Rocky Linux ---
+ip addr
+sudo systemctl enable --now sshd
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
+
+# --- Comandos en la Máquina Host (Windows) ---
+ping <IP_DE_TU_VM>
+ssh <tu_usuario_linux>@<IP_DE_TU_VM>
+ssh-keygen -t rsa -b 4096 -f C:\Users\steve\.ssh\llave_rocky
+type C:\Users\steve\.ssh\llave_rocky.pub | ssh johnny@192.168.0.100 "mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys && cat >> ~/.ssh/authorized_keys"
+ssh -i C:\Users\steve\.ssh\llave_rocky johnny@192.168.0.100
