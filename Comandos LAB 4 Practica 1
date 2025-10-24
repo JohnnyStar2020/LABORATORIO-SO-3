@@ -1,0 +1,18 @@
+PRACTICA 1 LAB 4
+
+sudo dnf install -y httpd
+sudo systemctl enable --now httpd
+sudo sed -i '/Listen 80/aListen 8080\nServerName localhost' /etc/httpd/conf/httpd.conf
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+sudo semanage port -a -t httpd_port_t -p tcp 8080
+sudo mkdir -p /var/www/holamundo
+echo -e "<!DOCTYPE html><html><head><title>Hola Mundo</title></head><body><h1>Hola Mundo</h1><p>Escuchando en el puerto 80.</p></body></html>" | sudo tee /var/www/holamundo/index.html
+sudo chcon -R -t httpd_sys_content_t /var/www/holamundo
+echo -e "<VirtualHost *:80>\nDocumentRoot /var/www/holamundo\nErrorLog logs/holamundo_error.log\nCustomLog logs/holamundo_access.log combined\n</VirtualHost>" | sudo tee /etc/httpd/conf.d/holamundo.conf
+sudo mkdir -p /var/www/personal
+echo -e "<!DOCTYPE html><html><head><title>Datos Personales</title></head><body><h1>Información</h1><p>Nombre: [Tu Nombre Completo]</p><p>Matrícula: [Tu Matrícula]</p><p>Materia: [Nombre de la Materia]</p><p>Escuchando en el puerto 8080.</p></body></html>" | sudo tee /var/www/personal/index.html
+sudo chcon -R -t httpd_sys_content_t /var/www/personal
+echo -e "<VirtualHost *:8080>\nDocumentRoot /var/www/personal\nErrorLog logs/personal_error.log\nCustomLog logs/personal_access.log combined\n</VirtualHost>" | sudo tee /etc/httpd/conf.d/personal.conf
+sudo systemctl restart httpd
