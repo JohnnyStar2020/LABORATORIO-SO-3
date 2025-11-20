@@ -1,0 +1,41 @@
+Comandos Practica 3 Lab 5
+
+sudo dnf install -y httpd keepalived
+sudo systemctl enable --now httpd
+echo "<h1>Server1</h1>" | sudo tee /var/www/html/index.html
+echo "<h1>Server2</h1>" | sudo tee /var/www/html/index.html
+
+echo 'vrrp_instance VI_1 {
+state MASTER
+interface enp0s3
+virtual_router_id 51
+priority 100
+advert_int 1
+authentication {
+    auth_type PASS
+    auth_pass 12345
+}
+virtual_ipaddress {
+    192.168.75.250
+}
+}' | sudo tee /etc/keepalived/keepalived.conf
+
+
+echo 'vrrp_instance VI_1 {
+state BACKUP
+interface enp0s3
+virtual_router_id 51
+priority 90
+advert_int 1
+authentication {
+    auth_type PASS
+    auth_pass 12345
+}
+virtual_ipaddress {
+    192.168.75.250
+}
+}' | sudo tee /etc/keepalived/keepalived.conf
+
+
+sudo systemctl enable --now keepalived
+sudo systemctl restart keepalived
