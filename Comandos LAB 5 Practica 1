@@ -1,0 +1,10 @@
+Practica 1 Lab 5
+
+mkdir -p /home/johnny/carpeta_sync
+cd /home/johnny/carpeta_sync
+touch file{001..100}.txt
+rsync -avz /home/johnny/carpeta_sync/ johnny2@192.168.75.136:/home/johnny2/carpeta_sync/
+echo '#!/bin/bash
+rsync -avz /home/johnny/carpeta_sync/ johnny2@192.168.75.136:/home/johnny2/carpeta_sync/' | sudo tee /usr/local/bin/sync.sh
+sudo chmod +x /usr/local/bin/sync.sh
+(crontab -l 2>/dev/null; echo "*/1 * * * * /usr/local/bin/sync.sh") | crontab -
