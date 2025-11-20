@@ -1,0 +1,13 @@
+Comandos Practica 2 LAB 5
+
+sudo dnf install -y pacemaker corosync pcs
+sudo systemctl enable --now pcsd
+sudo passwd hacluster
+sudo pcs host auth johnny johnny2 -u hacluster
+sudo pcs cluster setup clusterHA johnny johnny2
+sudo pcs cluster enable --all
+sudo pcs cluster start --all
+sudo pcs property set stonith-enabled=false
+sudo pcs property set no-quorum-policy=ignore
+sudo pcs resource create IPflotante ocf:heartbeat:IPaddr2 ip=192.168.75.200 cidr_netmask=24 op monitor interval=30s
+sudo pcs resource enable IPflotante
