@@ -1,0 +1,11 @@
+Comandos Practica 2 Lab 8
+
+sudo docker volume create portainer_data
+sudo docker rm -f portainer
+sudo docker pull portainer/portainer-ce:latest
+sudo docker run -d --name portainer -p 9443:9443 -p 9000:9000 -p 8000:8000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+# abrir navegador: https://127.0.0.1:9443
+# iniciar sesión, elegir docker local, entrar a "Containers"
+# detener contenedor web-nginx desde Portainer
+# comprobar: http://127.0.0.1:8888 (debe fallar)
