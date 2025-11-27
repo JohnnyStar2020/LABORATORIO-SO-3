@@ -1,0 +1,9 @@
+Practica 1 Lab 8
+
+sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo systemctl enable --now docker
+sudo docker ps
+sudo docker pull nginx
+sudo mkdir -p /home/website
+sudo docker run -d --name web-nginx -p 8888:80 -v /home/website:/usr/share/nginx/html nginx
+sudo nano /home/website/index.html
