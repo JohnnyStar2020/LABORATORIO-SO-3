@@ -1,0 +1,12 @@
+Comandos Practica 3 LAB 8
+
+sudo dnf install -y docker-compose-plugin
+docker compose version
+mkdir -p ~/wordpress
+cd ~/wordpress
+nano docker-compose.yml
+# (pegar archivo docker-compose con MySQL + WordPress)
+sudo docker compose up -d
+sudo docker ps
+# abrir navegador: http://127.0.0.1:8080
+# configurar WordPress
